@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             const container = document.querySelector('#task-cards .row');
 
-            data.forEach(task => {
+            data.forEach((task, index) => {
                 const card = document.createElement('div');
                 card.classList.add('card', 'col-md-3');
 
                 card.classList.add(task.status == '3' ? 'green' : task.status == '2' ? 'yellow' : 'red');
+                card.setAttribute('data-index', index);
 
                 card.innerHTML = `
                     <i class="icon fas fa-lightbulb"></i>
@@ -19,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="deadline">Deadline: ${task.deadline}</div>
                     </div>
                 `;
+
+                card.addEventListener('click', function() {
+                    localStorage.setItem('taskData', JSON.stringify(task));
+                    window.location.href = 'taskPage.html';
+                });
 
                 container.appendChild(card);
             });

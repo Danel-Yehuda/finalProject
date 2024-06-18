@@ -12,6 +12,11 @@ body{
     color: #4F939A !important;
 }
 
+
+nav{
+    border-bottom: #EBEBEB 1px solid;
+}
+
 .navbar-nav {
     margin-left: 40px;
 }
@@ -33,11 +38,7 @@ body{
     padding-left: 30px;
 }
 
-<<<<<<< HEAD
-.search-input input[type="text"]::placeholder {
-=======
 .search-input input::placeholder {
->>>>>>> e0229893a29986fd5cce26106cc8ddc47360bfd9
     color: #4F939A;
 }
 
@@ -73,15 +74,14 @@ body{
     color: white !important;
     border-color: #4F939A !important; 
     outline: none !important; 
-    box-shadow: 0 0 0 2px #6EAAB2 !important; 
+    box-shadow: 0 0 0 2px #6EAAB2 !important;
 }
 
 .sort-section {
     display: flex;
     align-items: center;
     border-bottom: #EBEBEB 1px solid;
-    border-top: #EBEBEB 1px solid;
-    padding: 20px;
+    padding-bottom: 20px;
 }
 
 .sort-section span {
@@ -124,6 +124,7 @@ body{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .card .icon {
