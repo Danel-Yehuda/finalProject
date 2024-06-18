@@ -1,0 +1,86 @@
+[
+    {
+        "name": "HomeWork",
+        "assignedTo": "Jenny",
+        "deadline": "12/05/2024",
+        "coins": 10,
+        "status": "1"
+    },
+    {
+        "name": "Take the dog out",
+        "assignedTo": "Jenny",
+        "deadline": "06/05/2024",
+        "coins": 5,
+        "status": "1"
+    },
+    {
+        "name": "Clean the room",
+        "assignedTo": "Emma",
+        "deadline": "26/04/2024",
+        "coins": 10,
+        "status": "1"
+    },
+    {
+        "name": "Cook dinner",
+        "assignedTo": "Jenny",
+        "deadline": "23/04/2024",
+        "coins": 8,
+        "status": "1"
+    },
+    {
+        "name": "Buy milk and eggs",
+        "assignedTo": "Jenny",
+        "deadline": "05/04/2024",
+        "coins": 7,
+        "status": "2"
+    },
+    {
+        "name": "Homework",
+        "assignedTo": "Emma",
+        "deadline": "06/05/2024",
+        "coins": 10,
+        "status": "3"
+    },
+    {
+        "name": "Volunteer",
+        "assignedTo": "Emma",
+        "deadline": "26/04/2024",
+        "coins": 10,
+        "status": "1"
+    },
+    {
+        "name": "Wash the dishes",
+        "assignedTo": "Jenny",
+        "deadline": "15/06/2024",
+        "coins": 5,
+        "status": "1"
+    },
+    {
+        "name": "Water the plants",
+        "assignedTo": "Emma",
+        "deadline": "10/06/2024",
+        "coins": 4,
+        "status": "1"
+    },
+    {
+        "name": "Take out the trash",
+        "assignedTo": "Jenny",
+        "deadline": "05/06/2024",
+        "coins": 3,
+        "status": "2"
+    },
+    {
+        "name": "Do laundry",
+        "assignedTo": "Emma",
+        "deadline": "08/06/2024",
+        "coins": 6,
+        "status": "1"
+    },
+    {
+        "name": "Study for exam",
+        "assignedTo": "Jenny",
+        "deadline": "20/06/2024",
+        "coins": 10,
+        "status": "3"
+    }
+]

@@ -105,3 +105,68 @@ body{
     color: white;
     border-color: #4F939A;
 }
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #fff;
+}
+
+.card .icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+}
+
+.card .title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card .details {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+.card .details .coins {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    
+}
+
+#coinIcon {
+    color: #FFC107;
+}
+
+.card .details .assigned-to,
+.card .details .deadline {
+    margin-top: 5px;
+}
+
+.card.green .icon {
+    color: #1D9313;
+}
+
+.card.yellow .icon {
+    color: #FFC104;
+}
+
+.card.red .icon {
+    color: #DC3545;
+}
