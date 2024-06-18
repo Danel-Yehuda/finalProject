@@ -5,6 +5,75 @@ body {
     padding: 0;
 }
 
+.navbar-nav .nav-item .nav-link.active {
+    color: #4F939A !important;
+}
+
+nav{
+    border-bottom: #EBEBEB 1px solid;
+}
+
+.navbar-nav {
+    margin-left: 40px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.search-input {
+    position: relative;
+    margin-right: 170px;
+}
+
+.search-input input {
+    padding-left: 30px;
+}
+
+.search-input input::placeholder {
+    color: #4F939A;
+}
+
+#searchIcon {
+    position: relative;
+    left: 30px;
+    color: #FFC107;
+    top: 2px;
+}
+
+.nav-item {
+    font-size: x-large;
+}
+
+.btn {
+    color: #4F939A;
+    border-color: #4F939A;
+}
+
+.btn:hover {
+    background-color: #6EAAB2; 
+    color: white; 
+    border-color: #6EAAB2; 
+}
+
+.btn:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px #6EAAB2; 
+}
+
+.btn:active {
+    background-color: #4F939A !important;
+    color: white !important;
+    border-color: #4F939A !important; 
+    outline: none !important; 
+    box-shadow: 0 0 0 2px #6EAAB2 !important; 
+}
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -32,11 +101,7 @@ h1 {
     margin-right: 8px;
 }
 
-.d-flex i {
-    font-size: 1.5em;
-    margin-left: 10px;
-    cursor: pointer;
-}
+
 
 .task-details {
     margin-top: 20px;
@@ -60,11 +125,14 @@ h1 {
 .task-actions .btn-success {
     background-color: #28a745;
     border-color: #28a745;
+    color: #fff;
 }
 
 .task-actions .btn-danger {
     background-color: #dc3545;
     border-color: #dc3545;
+    color: #fff;
+
 }
 
 .task-actions .btn:hover {

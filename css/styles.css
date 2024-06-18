@@ -12,6 +12,11 @@ body{
     color: #4F939A !important;
 }
 
+
+nav{
+    border-bottom: #EBEBEB 1px solid;
+}
+
 .navbar-nav {
     margin-left: 40px;
 }
@@ -69,15 +74,14 @@ body{
     color: white !important;
     border-color: #4F939A !important; 
     outline: none !important; 
-    box-shadow: 0 0 0 2px #6EAAB2 !important; 
+    box-shadow: 0 0 0 2px #6EAAB2 !important;
 }
 
 .sort-section {
     display: flex;
     align-items: center;
     border-bottom: #EBEBEB 1px solid;
-    border-top: #EBEBEB 1px solid;
-    padding: 20px;
+    padding-bottom: 20px;
 }
 
 .sort-section span {
