@@ -18,7 +18,7 @@
 }
 
 .search-input input[type="text"]::placeholder {
-    color: #4F939A; 
+    color: #4F939A;
 }
 
 .search-input .fa-search {
