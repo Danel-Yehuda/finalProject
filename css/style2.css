@@ -1,5 +1,75 @@
 body {
-    background-color: #F5F7FC;
+    font-family: "Raleway", sans-serif;
+    background-color: #F8F9FA;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #4F939A !important;
+}
+
+
+nav {
+    border-bottom: #EBEBEB 1px solid;
+}
+
+.navbar-nav {
+    margin-left: 40px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.search-input {
+    position: relative;
+    margin-right: 170px;
+}
+
+.search-input input {
+    padding-left: 30px;
+}
+
+.search-input input::placeholder {
+    color: #4F939A;
+}
+
+.search-input .fa-search {
+    position: relative;
+    left: 30px;
+    color: #FFC107;
+    top: 2px;
+}
+
+.nav-item {
+    font-size: x-large;
+}
+
+.btn {
+    color: #4F939A;
+    border-color: #4F939A;
+}
+
+.btn:hover {
+    background-color: #6EAAB2;
+    color: white;
+    border-color: #6EAAB2;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #6EAAB2;
+}
+
+.btn:active {
+    background-color: #4F939A !important;
+    color: white !important;
+    border-color: #4F939A !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px #6EAAB2 !important;
 }
 
 #wrapper {
@@ -11,29 +81,32 @@ h1 {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: 36px;
+    font-size: 40px;
     pointer-events: none;
     margin-left: 20px;
 }
 
 #AddTask {
-    margin-top: 26px;
+    margin-top: 25px;
     margin-left: 60px;
     width: 220px;
-    height: 54px;
-    display: flex;
+    height: 50px;
     background-color: #3FDBC8;
     color: black;
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 30px;
+    display: flex;
+    margin-bottom: 50px;
+    font-weight: bold;
+    text-align: center;
 }
 
 ul {
-    display: flex;
     margin-left: 60px;
     margin-bottom: 80px;
+    display: flex;
 
 }
 
@@ -48,16 +121,13 @@ li {
 }
 
 #PublishTask {
-    height: 34px;
-    width: 130px;
+    height: 40px;
+    width: 140px;
     background-color: #3FDBC8;
     color: black;
     font-size: 20px;
-}
-
-li div {
-    display: flex;
-    align-items: center;
+    font-weight: bold;
+    text-align: center;
 }
 
 li .bi-pencil,
@@ -68,7 +138,128 @@ li .bi-trash {
 
 #PublishTask,
 .bi-pencil,
-.bi-trash {
+.bi-trash,
+.bi-arrow-right {
     height: 35px;
     line-height: 34px;
+    cursor: pointer;
+
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 35px;
+    pointer-events: none;
+    position: absolute;
+    top: 15%;
+    left: 55%;
+    display: flex;
+}
+
+#GrayRectangle {
+    box-sizing: border-box;
+    background-color: #D9D9D9;
+    height: 300px;
+    width: 656px;
+    position: absolute;
+    top: 25%;
+    left: 55%;
+    display: flex;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.card .icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+}
+
+.card .title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.card .details {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card .details .coins {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+
+}
+
+#coinIcon {
+    color: #FFC107;
+}
+
+.card .details .assigned-to,
+.card .details .deadline {
+    margin-top: 5px;
+}
+
+.card.green .icon {
+    color: #1D9313;
+}
+
+.card.yellow .icon {
+    color: #FFC104;
+}
+
+.card.red .icon {
+    color: #DC3545;
+}
+
+.add-task-button {
+    display: block;
+    margin: 10px auto 0;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.publish-task-button {
+    background-color: #3FDBC8;
+    height: 35px;
+    width: 160px;
+    text-align: center;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.bi-arrow-right {
+    font-size: 30px;
 }
