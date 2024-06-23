@@ -270,8 +270,7 @@ h2 {
 
 }
 
-#addTaskForm
-{
+#addTaskForm {
     margin-left: 300px;
     margin-top: 80px;
     position: absolute;
@@ -289,4 +288,15 @@ h2 {
     margin-left: 20px;
     color: black;
     font-weight: bold;
+}
+
+.btn-secondary,
+.btn-danger {
+    color: white;
+    border-color: black;
+
+}
+
+.btn-secondary {
+    background-color: #3FDBC8;
 }

@@ -3,6 +3,8 @@ window.onload = () => {
         .then(response => response.json())
         .then(data => {
             createListTasks(data);
+            AddNewTask();
+            DeleteTask(); // Call DeleteTask after tasks are created
         });
 
     fetch("data/RecommendPublish.json")
@@ -16,7 +18,6 @@ window.onload = () => {
         .then(data => {
             AddTRecommenedTasks(data);
         });
-    AddNewTask();
 };
 
 let NumofTasks = data.tasks.length;
@@ -208,4 +209,48 @@ function AddNewTask() {
     }, 100);
 }
 
+
+function DeleteTask() {
+    const trashIcons = document.getElementsByClassName("bi-trash");
+    let taskToDelete = null;
+
+    const modalHtml = `
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this task?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
+    Array.from(trashIcons).forEach(icon => {
+        icon.addEventListener('click', function () {
+            taskToDelete = this.closest('li');
+
+            deleteModal.show();
+        });
+    });
+
+    document.getElementById('confirmDelete').addEventListener('click', function () {
+        if (taskToDelete) {
+            taskToDelete.remove();
+            taskToDelete = null;
+
+            deleteModal.hide();
+        }
+    });
+}
 
