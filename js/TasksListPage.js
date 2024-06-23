@@ -14,9 +14,12 @@ window.onload = () => {
     fetch("data/RecommendAddTasks.json")
         .then(response => response.json())
         .then(data => {
-            AddTasks(data);
+            AddTRecommenedTasks(data);
         });
+    AddNewTask();
 };
+
+let NumofTasks = data.tasks.length;
 
 function createListTasks(data) {
     const main = document.querySelector("main");
@@ -108,7 +111,7 @@ function createPublish(data) {
     rectangleOfPublish.appendChild(div);
 }
 
-function AddTasks(data) {
+function AddTRecommenedTasks(data) {
     const main = document.querySelector("main");
     const rectangleOfRecoomened = document.createElement("div");
     rectangleOfRecoomened.id = "GrayRectangle";
@@ -121,7 +124,7 @@ function AddTasks(data) {
 
         AddTask.innerHTML = `
             <div class="title">${task.name}</div>
-            <input type="button" value="Add Task" class="publish-task-button">
+            <input type="button" value="Add Task" class="add-task-button">
         `;
 
         rectangleOfRecoomened.appendChild(AddTask);
@@ -131,5 +134,78 @@ function AddTasks(data) {
     const slideRight = document.createElement("i");
     slideRight.className = "bi bi-arrow-right";
     div.appendChild(slideRight);
-    rectangleOfRecoomened.appendChild(div); // Corrected line
+    rectangleOfRecoomened.appendChild(div);
 }
+
+function AddNewTask() {
+    let taskModal = document.getElementById('taskModal');
+    if (!taskModal) {
+        const modalHtml = `
+            <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="taskModalLabel">Add New Task</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="taskForm">
+                                <div class="mb-3">
+                                    <label for="taskName" class="form-label">Task Name</label>
+                                    <input type="text" class="form-control" id="taskName" name="taskName" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        taskModal = new bootstrap.Modal(document.getElementById('taskModal'));
+
+        document.getElementById('taskForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const taskName = document.getElementById('taskName').value;
+            console.log('New Task:', taskName);
+
+            const ul = document.querySelector('.list-group');
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between align-items-center";
+            li.textContent = taskName;
+
+            const div = document.createElement("div");
+
+            const editIcon = document.createElement("i");
+            editIcon.className = "bi bi-pencil";
+            div.appendChild(editIcon);
+
+            const deleteIcon = document.createElement("i");
+            deleteIcon.className = "bi bi-trash";
+            div.appendChild(deleteIcon);
+
+            const publishButton = document.createElement("input");
+            publishButton.type = "button";
+            publishButton.value = "Publish";
+            publishButton.id = "PublishTask";
+            div.appendChild(publishButton);
+
+            li.appendChild(div);
+            ul.appendChild(li);
+
+            taskModal.hide();
+        });
+    }
+
+    let checkButtonExistence = setInterval(function () {
+        let addButton = document.getElementById('AddTask');
+        if (addButton) {
+            clearInterval(checkButtonExistence);
+            addButton.addEventListener('click', function () {
+                taskModal.show();
+            });
+        }
+    }, 100);
+}
+
+
