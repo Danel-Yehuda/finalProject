@@ -1,0 +1,14 @@
+[
+    {
+        "image": "images/kid1.jpg",
+        "name": "John",
+        "tasksDone": 5,
+        "coins": 10
+    },
+    {
+        "image": "images/kid2.jpg",
+        "name": "Alice",
+        "tasksDone": 7,
+        "coins": 15
+    }
+]
