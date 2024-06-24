@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="title">${task.name}</div>
                     <div class="details">
                         <div class="coins"><span>${task.coins}</span> <i id="coinIcon" class="fas fa-coins"></i></div>
-                        <div class="assigned-to">Assigned to: ${task.assignedTo}</div>
-                        <div class="deadline">Deadline: ${task.deadline}</div>
+                        <div class="subDetails">
+                            <div class="assigned-to">Assigned to: ${task.assignedTo}</div>
+                            <div class="deadline">Deadline: ${task.deadline}</div>
+                        </div>
                     </div>
                 `;
 
