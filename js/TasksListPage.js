@@ -4,7 +4,7 @@ window.onload = () => {
         .then(data => {
             createListTasks(data);
             AddNewTask();
-            DeleteTask(); // Call DeleteTask after tasks are created
+            DeleteTask();
         });
 
     fetch("data/RecommendPublish.json")
@@ -18,9 +18,13 @@ window.onload = () => {
         .then(data => {
             AddTRecommenedTasks(data);
         });
-};
 
-let NumofTasks = data.tasks.length;
+    fetch("data/Kids.json")
+        .then(response => response.json())
+        .then(data => {
+            PublishTask(data);
+        });
+};
 
 function createListTasks(data) {
     const main = document.querySelector("main");
@@ -38,8 +42,7 @@ function createListTasks(data) {
     ul.className = "list-group mt-3";
     main.appendChild(ul);
 
-    for (let i = 0; i < data.tasks.length; i++) {
-        const task = data.tasks[i];
+    data.tasks.forEach(task => {
         const li = document.createElement("li");
         li.className = "list-group-item d-flex justify-content-between align-items-center";
         li.textContent = task.name;
@@ -62,7 +65,7 @@ function createListTasks(data) {
 
         li.appendChild(div);
         ul.appendChild(li);
-    }
+    });
 }
 
 function createPublish(data) {
@@ -79,7 +82,7 @@ function createPublish(data) {
     data.publishTasks.forEach(task => {
         const card = document.createElement('div');
         card.classList.add('card', 'col-md-3');
-        card.classList.add(task.status == '3' ? 'green' : task.status == '2' ? 'yellow' : 'red');
+        card.classList.add(task.status === '3' ? 'green' : task.status === '2' ? 'yellow' : 'red');
 
         card.innerHTML = `
             <i class="icon fas fa-lightbulb"></i>
@@ -192,7 +195,7 @@ function AddNewTask() {
             div.appendChild(publishButton);
 
             li.appendChild(div);
-            ul.appendChild(li);
+            ul.prepend(li);
 
             taskModal.hide();
         });
@@ -208,7 +211,6 @@ function AddNewTask() {
         }
     }, 100);
 }
-
 
 function DeleteTask() {
     const trashIcons = document.getElementsByClassName("bi-trash");
@@ -254,3 +256,66 @@ function DeleteTask() {
     });
 }
 
+function PublishTask(data) {
+    const modalHtml = `
+        <div class="modal fade" id="publishTaskModal" tabindex="-1" aria-labelledby="publishTaskModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="publishTaskModalLabel">Publish Task</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="publishTaskForm">
+                            <div class="mb-3">
+                                <label for="assignedTo" class="form-label">Assigned To</label>
+                                <select class="form-select" id="assignedTo" required>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="deadline" class="form-label">Deadline</label>
+                                <input type="date" class="form-control" id="deadline" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="coins" class="form-label">Coins</label>
+                                <input type="number" class="form-control" id="coins" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    const publishTaskModal = new bootstrap.Modal(document.getElementById('publishTaskModal'));
+    const kidsData = data;
+    const assignedToSelect = document.getElementById('assignedTo');
+
+    kidsData.forEach(kid => {
+        const option = document.createElement('option');
+        option.value = kid.name;
+        option.textContent = kid.name;
+        assignedToSelect.appendChild(option);
+    });
+
+    document.querySelectorAll('#PublishTask').forEach(publishButton => {
+        publishButton.addEventListener('click', function (event) {
+            openPublishModal(publishTaskModal, event);
+        });
+    });
+}
+
+function openPublishModal(publishTaskModal, event) {
+    publishTaskModal.show();
+
+    document.getElementById('publishTaskForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const assignedTo = document.getElementById('assignedTo').value;
+        const deadline = document.getElementById('deadline').value;
+        const coins = document.getElementById('coins').value;
+        console.log(`Task assigned to: ${assignedTo}, Deadline: ${deadline}, Coins: ${coins}`);
+
+        publishTaskModal.hide();
+    }, { once: true });
+}

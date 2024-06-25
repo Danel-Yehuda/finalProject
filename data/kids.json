@@ -1,13 +1,13 @@
 [
     {
         "image": "images/kid1.jpg",
-        "name": "John",
+        "name": "Emma",
         "tasksDone": 5,
         "coins": 10
     },
     {
         "image": "images/kid2.jpg",
-        "name": "Alice",
+        "name": "Jenny",
         "tasksDone": 7,
         "coins": 15
     }
