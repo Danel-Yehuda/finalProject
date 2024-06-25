@@ -301,21 +301,38 @@ function PublishTask(data) {
 
     document.querySelectorAll('#PublishTask').forEach(publishButton => {
         publishButton.addEventListener('click', function (event) {
-            openPublishModal(publishTaskModal, event);
+            const taskName = this.closest('li').textContent.trim();
+            openPublishModal(publishTaskModal, event, taskName);
         });
     });
 }
 
-function openPublishModal(publishTaskModal, event) {
+function openPublishModal(publishTaskModal, event, taskName) {
     publishTaskModal.show();
 
-    document.getElementById('publishTaskForm').addEventListener('submit', function (event) {
+    const form = document.getElementById('publishTaskForm');
+    form.addEventListener('submit', function submitHandler(event) {
         event.preventDefault();
         const assignedTo = document.getElementById('assignedTo').value;
-        const deadline = document.getElementById('deadline').value;
+        const deadline = document.getElementById('deadline').value.split('-').reverse().join('/');
         const coins = document.getElementById('coins').value;
+
+        const newTask = {
+            name: taskName,
+            assignedTo: assignedTo,
+            deadline: deadline,
+            coins: coins,
+            status: '1'
+        };
+
+        let tasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
+        tasks.unshift(newTask); 
+        localStorage.setItem('publishedTasks', JSON.stringify(tasks));
+
         console.log(`Task assigned to: ${assignedTo}, Deadline: ${deadline}, Coins: ${coins}`);
 
         publishTaskModal.hide();
-    }, { once: true });
+
+        form.removeEventListener('submit', submitHandler);
+    });
 }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
     const taskData = JSON.parse(localStorage.getItem('taskData'));
     if (!taskData) {
         window.location.href = 'index.html'; // Redirect if no task data is found
@@ -35,4 +35,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Error fetching history:', error));
-});
+
+    // Add modal HTML
+    const modalHtml = `
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this task?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
+    // Handle task deletion
+    document.querySelector('.fa-trash').addEventListener('click', function() {
+        deleteModal.show();
+    });
+
+    document.getElementById('confirmDelete').addEventListener('click', function() {
+        let tasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
+        tasks = tasks.filter(task => !(task.name === taskData.name && task.deadline === taskData.deadline && task.assignedTo === taskData.assignedTo));
+        localStorage.setItem('publishedTasks', JSON.stringify(tasks));
+        localStorage.removeItem('taskData'); // Optionally remove the current task data
+        deleteModal.hide();
+        window.location.href = 'index.html'; // Redirect to the main page
+    });
+};
