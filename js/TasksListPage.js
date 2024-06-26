@@ -326,7 +326,7 @@ function openPublishModal(publishTaskModal, event, taskName) {
         };
 
         let tasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
-        tasks.unshift(newTask); 
+        tasks.unshift(newTask);
         localStorage.setItem('publishedTasks', JSON.stringify(tasks));
 
         console.log(`Task assigned to: ${assignedTo}, Deadline: ${deadline}, Coins: ${coins}`);

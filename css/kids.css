@@ -32,7 +32,6 @@ nav{
 .search-input {
     position: relative;
     margin-right: 170px;
-    
 }
 
 .search-input input {
@@ -91,4 +90,14 @@ nav .btn:active {
 
 .card .btn{
     color: white;
+}
+
+.Addkid
+{
+    background-color: #3FDBC8;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+    
 }

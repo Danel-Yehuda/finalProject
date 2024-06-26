@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #F8F9FA;
 }
@@ -13,8 +13,12 @@ body{
 }
 
 
-nav{
+nav {
     border-bottom: #EBEBEB 1px solid;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Poppins', sans-serif;
 }
 
 .navbar-nav {
@@ -32,7 +36,6 @@ nav{
 .search-input {
     position: relative;
     margin-right: 170px;
-    
 }
 
 .search-input input {
@@ -56,23 +59,23 @@ nav{
     margin-left: 30px;
 }
 
-nav .btn {
+.btn {
     color: #4F939A;
     border-color: #4F939A;
 }
 
-nav .btn:hover {
+.btn:hover {
     background-color: #6EAAB2;
     color: white;
     border-color: #6EAAB2;
 }
 
-nav .btn:focus {
+.btn:focus {
     outline: none;
     box-shadow: 0 0 0 2px #6EAAB2;
 }
 
-nav .btn:active {
+.btn:active {
     background-color: #4F939A !important;
     color: white !important;
     border-color: #4F939A !important;
@@ -93,6 +96,7 @@ h1 {
     pointer-events: none;
     margin-left: 20px;
 }
+
 
 #AddTask {
     margin-top: 25px;
@@ -117,15 +121,15 @@ ul {
     display: flex;
 }
 
-li {
+main>ul>li {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 40px;
-    width: 720px;
-    height: 140px;
+    width: 50%;
     margin-top: 20px;
 }
+
 
 #PublishTask {
     height: 40px;
@@ -159,7 +163,7 @@ h2 {
     font-size: 35px;
     pointer-events: none;
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 55%;
     display: flex;
 }
@@ -175,20 +179,26 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
+
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .card {
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 250px;
-    height: 275px;
-    margin-left: 30px;
-    margin-right: 20px;
+    padding: 20px;
+    margin: 10px;
+    width: 500px;
+    height: 250px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     background-color: #fff;
     cursor: pointer;
-    align-items: center;
 }
 
 .card .icon {
@@ -199,18 +209,26 @@ h2 {
 }
 
 .card .title {
-    font-size: 25px;
-    font-weight: bold;
-    align-items: center;
     text-align: center;
-    margin-top: 75px;
-
-
+    margin-top: 40px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
+
+.card .subDetails {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
 
 .card .details {
     text-align: center;
-    font-size: 20px;
+    margin-top: 10px;
+    font-size: 1em;
 }
 
 .card .details .coins {
@@ -241,7 +259,6 @@ h2 {
 .card.red .icon {
     color: #DC3545;
 }
-
 .publish-task-button {
     background-color: #3FDBC8;
     height: 35px;
