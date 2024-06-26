@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #F8F9FA;
 }
@@ -13,7 +13,7 @@ body{
 }
 
 
-nav{
+nav {
     border-bottom: #EBEBEB 1px solid;
 }
 
@@ -88,16 +88,26 @@ nav .btn:active {
     margin-bottom: 20px;
 }
 
-.card .btn{
+.card .btn {
     color: white;
 }
 
-.Addkid
-{
+.Addkid {
     background-color: #3FDBC8;
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
     position: absolute;
-    
+}
+
+#confirmDelete {
+    background-color: #3FDBC8;
+    margin-left: 20px;
+    border-color: black;
+}
+
+.btn-secondary {
+    background-color: #db3f4c;
+    margin-left: 20px;
+    border-color: black;
 }

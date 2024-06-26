@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             createAddKidButton();
             AddKid();
+            DeleteKid();
         })
         .catch(error => console.error('Error fetching the kids data:', error));
 });
@@ -116,3 +117,51 @@ function AddKid() {
     });
 }
 
+function DeleteKid() {
+    const kidsContainer = document.getElementById('kidsContainer');
+
+    const modalHtml = `
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this kid?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+
+    let cardToDelete = null;
+
+    kidsContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('delete-kid')) {
+            cardToDelete = event.target.closest('.card');
+            if (cardToDelete) {
+                confirmDeleteModal.show();
+            }
+        }
+    });
+
+    document.getElementById('confirmDelete').addEventListener('click', function () {
+        if (cardToDelete) {
+            cardToDelete.remove();
+            cardToDelete = null;
+            confirmDeleteModal.hide();
+        }
+    });
+
+    document.querySelector('.btn-secondary').addEventListener('click', function () {
+        confirmDeleteModal.hide();
+    });
+}
