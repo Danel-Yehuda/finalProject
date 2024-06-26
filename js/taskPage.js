@@ -36,7 +36,6 @@ window.onload = function() {
         })
         .catch(error => console.error('Error fetching history:', error));
 
-    // Add modal HTML
     const modalHtml = `
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">

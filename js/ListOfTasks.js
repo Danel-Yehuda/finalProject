@@ -67,7 +67,6 @@ function createListTasks(data) {
         ul.appendChild(li);
     });
 }
-
 function createPublish(data) {
     const main = document.querySelector("main");
     const h2 = document.createElement("h2");
@@ -75,13 +74,12 @@ function createPublish(data) {
     main.appendChild(h2);
 
     const rectangleOfPublish = document.createElement("div");
-    rectangleOfPublish.id = "GrayRectangle";
-    rectangleOfPublish.className = "d-flex justify-content-around rectangle-publish";
+    rectangleOfPublish.classList.add("GrayRectangle");
     main.appendChild(rectangleOfPublish);
 
     data.publishTasks.forEach(task => {
         const card = document.createElement('div');
-        card.classList.add('card', 'col-md-3');
+        card.classList.add('card');
         card.classList.add(task.status === '3' ? 'green' : task.status === '2' ? 'yellow' : 'red');
 
         card.innerHTML = `
@@ -108,6 +106,9 @@ function createPublish(data) {
         rectangleOfPublish.appendChild(card);
     });
 
+
+
+
     const div = document.createElement("div");
     const slideRight = document.createElement("i");
     slideRight.className = "bi bi-arrow-right";
@@ -118,13 +119,12 @@ function createPublish(data) {
 function AddTRecommenedTasks(data) {
     const main = document.querySelector("main");
     const rectangleOfRecoomened = document.createElement("div");
-    rectangleOfRecoomened.id = "GrayRectangle";
-    rectangleOfRecoomened.className = "d-flex justify-content-around rectangle-add-tasks";
+    rectangleOfRecoomened.classList.add("GrayRectangle", "rectangle-add-tasks");
     main.appendChild(rectangleOfRecoomened);
 
     data.AddTasks.forEach(task => {
         const AddTask = document.createElement('div');
-        AddTask.classList.add('card', 'col-md-3');
+        AddTask.classList.add('card');
 
         AddTask.innerHTML = `
             <div class="title">${task.name}</div>
