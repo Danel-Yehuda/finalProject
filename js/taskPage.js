@@ -1,7 +1,7 @@
 window.onload = function() {
     const taskData = JSON.parse(localStorage.getItem('taskData'));
     if (!taskData) {
-        window.location.href = 'index.html'; // Redirect if no task data is found
+        window.location.href = 'index.html';
     }
 
     document.getElementById('task-title').innerText = taskData.name;
@@ -10,7 +10,6 @@ window.onload = function() {
     document.getElementById('task-status').innerText = taskData.status;
     document.getElementById('task-coins').innerText = taskData.coins;
 
-    // Fetch and display history
     fetch('data/taskHistory.json')
         .then(response => response.json())
         .then(historyData => {
@@ -21,7 +20,6 @@ window.onload = function() {
                     const listItem = document.createElement('li');
                     listItem.classList.add('list-group-item');
 
-                    // Determine the class for action based on its value
                     const actionClass = history.action.toLowerCase() === 'approved' ? 'text-success' : 'text-danger';
 
                     listItem.innerHTML = `<strong>${history.date}</strong> ${history.kid} - <span class="${actionClass}">${history.action}</span>`;
@@ -58,14 +56,14 @@ window.onload = function() {
     document.body.insertAdjacentHTML('beforeend', modalHtml);
     const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
-    // Handle task deletion
     document.querySelector('.fa-trash').addEventListener('click', function() {
         deleteModal.show();
     });
 
     document.getElementById('confirmDelete').addEventListener('click', function() {
-        console.log(`DELETE https://taskids/api/kids/${id}`);
+        const taskId = taskData.id;
+        console.log(`DELETE https://taskids/api/publish-tasks/${taskId}`);
         deleteModal.hide();
-        window.location.href = 'index.html'; // Redirect to the main page
+        
     });
 };

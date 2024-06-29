@@ -322,7 +322,7 @@ function openPublishModal(publishTaskModal, event, taskName) {
             status: '1'
         };
 
-        console.log(`POST https://taskids/api/tasks/`);
+        console.log(`POST https://taskids/api/publish-tasks/`);
         console.log("Request body:", {
             newTask: newTask
         });
