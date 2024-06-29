@@ -241,10 +241,10 @@ function DeleteTask() {
     });
 
     document.getElementById('cancelDelete').addEventListener('click', function () {
-            deleteModal.hide();
+        deleteModal.hide();
     });
 
-    Array.from(document.getElementsByClassName('btn-close')).forEach(function(element) {
+    Array.from(document.getElementsByClassName('btn-close')).forEach(function (element) {
         element.addEventListener('click', function () {
             deleteModal.hide();
         });
@@ -326,7 +326,7 @@ function openPublishModal(publishTaskModal, event, taskName) {
         console.log("Request body:", {
             newTask: newTask
         });
-
+        publishTaskModal.hide();
     });
 
     document.querySelectorAll('.btn-close').forEach(icon => {
