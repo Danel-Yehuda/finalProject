@@ -151,7 +151,7 @@ li .bi-trash {
     margin-right: 10px;
 }
 
-#PublishTask,
+.PublishTask,
 .bi-pencil,
 .bi-trash,
 .bi-arrow-right {
@@ -159,6 +159,78 @@ li .bi-trash {
     line-height: 34px;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    ul {
+        flex-direction: column;
+    }
+    main>ul>li {
+        width: 100%;
+        font-size: 35px;
+    }
+
+    li .bi-pencil,
+    li .bi-trash {
+        font-size: 22px;
+    }
+
+    #PublishTask {
+        font-size: 18px;
+        width: 130px;
+        height: 35px;
+}
+
+@media (max-width: 992px) {
+    main>ul>li {
+        font-size: 30px;
+    }
+
+    li .bi-pencil,
+    li .bi-trash {
+        font-size: 20px;
+    }
+
+    #PublishTask {
+        font-size: 16px;
+        width: 120px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    main>ul>li {
+        font-size: 25px;
+    }
+
+    li .bi-pencil,
+    li .bi-trash {
+        font-size: 18px;
+    }
+
+    #PublishTask {
+        font-size: 14px;
+        width: 110px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    main>ul>li {
+        font-size: 20px;
+    }
+
+    li .bi-pencil,
+    li .bi-trash {
+        font-size: 16px;
+    }
+
+    #PublishTask {
+        font-size: 12px;
+        width: 100px;
+        height: 20px;
+    }
+}
 }
 
 h2 {
@@ -174,6 +246,15 @@ h2 {
     display: flex;
 }
 
+@media (max-width: 992px) {
+    h2 {
+        position: static;
+        top: auto;
+        left: auto;
+        margin-top: 20px;
+        margin-left: 60px;
+    }
+}
 
 .GrayRectangle {
     box-sizing: border-box;
@@ -188,6 +269,30 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+@media (max-width: 992px) {
+    .GrayRectangle {
+        position: static;
+        top: auto;
+        left: auto;
+        margin-top: 20px;
+        margin-left: 60px;
+        width: calc(100% - 120px);
+    }
+}
+@media (max-width: 768px) {
+    .GrayRectangle {
+        margin-left: 40px;
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 576px) {
+    .GrayRectangle {
+        margin-left: 20px;
+        width: calc(100% - 40px);
+    }
 }
 
 .card {
@@ -272,7 +377,89 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
 }
+@media (max-width: 1200px) {
+    .card {
+        width: 220px;
+        height: 250px;
+    }
+    .card .icon {
+        font-size: 22px;
+    }
+    .card .title {
+        font-size: 1.4em;
+    }
+    .card .details .coins {
+        font-size: 1.1em;
+    }
+    .publish-task-button {
+        font-size: 18px;
+        height: 30px;
+        width: 140px;
+    }
+}
 
+@media (max-width: 992px) {
+    .card {
+        width: 200px;
+        height: 230px;
+    }
+    .card .icon {
+        font-size: 20px;
+    }
+    .card .title {
+        font-size: 1.3em;
+    }
+    .card .details .coins {
+        font-size: 1em;
+    }
+    .publish-task-button {
+        font-size: 16px;
+        height: 28px;
+        width: 130px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 180px;
+        height: 210px;
+    }
+    .card .icon {
+        font-size: 18px;
+    }
+    .card .title {
+        font-size: 1.2em;
+    }
+    .card .details .coins {
+        font-size: 0.9em;
+    }
+    .publish-task-button {
+        font-size: 14px;
+        height: 25px;
+        width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: 160px;
+        height: 190px;
+    }
+    .card .icon {
+        font-size: 16px;
+    }
+    .card .title {
+        font-size: 1.1em;
+    }
+    .card .details .coins {
+        font-size: 0.8em;
+    }
+    .publish-task-button {
+        font-size: 12px;
+        height: 22px;
+        width: 110px;
+    }
+}
 
 .bi-arrow-right {
     font-size: 30px;
@@ -295,6 +482,31 @@ h2 {
     gap: 10px;
 }
 
+@media (max-width: 992px) {
+    .rectangle-add-tasks {
+        position: static;
+        top: auto;
+        left: auto;
+        margin-top: 20px;
+        margin-left: 60px;
+        width: calc(100% - 120px);
+    }
+}
+
+@media (max-width: 768px) {
+    .rectangle-add-tasks {
+        margin-left: 40px;
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 576px) {
+    .rectangle-add-tasks {
+        margin-left: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
 .add-task-button {
     background-color: #3FDBC8;
     height: 35px;
@@ -308,6 +520,39 @@ h2 {
     transform: translateX(-50%);
 }
 
+@media (max-width: 1200px) {
+
+    .add-task-button {
+        font-size: 18px;
+        height: 30px;
+        width: 140px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .add-task-button {
+        font-size: 16px;
+        height: 28px;
+        width: 130px;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-task-button {
+        font-size: 14px;
+        height: 25px;
+        width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .add-task-button {
+        font-size: 12px;
+        height: 22px;
+        width: 110px;
+    }
+}
 #addTaskForm {
     margin-left: 300px;
     margin-top: 80px;
@@ -336,5 +581,5 @@ h2 {
 }
 
 .btn-secondary {
-    background-color: #3FDBC8;
+    background-color: #3FDBC8;
 }
