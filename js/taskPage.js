@@ -64,10 +64,7 @@ window.onload = function() {
     });
 
     document.getElementById('confirmDelete').addEventListener('click', function() {
-        let tasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
-        tasks = tasks.filter(task => !(task.name === taskData.name && task.deadline === taskData.deadline && task.assignedTo === taskData.assignedTo));
-        localStorage.setItem('publishedTasks', JSON.stringify(tasks));
-        localStorage.removeItem('taskData'); // Optionally remove the current task data
+        console.log(`DELETE https://taskids/api/kids/${id}`);
         deleteModal.hide();
         window.location.href = 'index.html'; // Redirect to the main page
     });

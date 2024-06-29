@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             renderTasks(container, data);
-            const publishedTasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
-            renderTasks(container, publishedTasks, true);
         })
         .catch(error => console.error('Error fetching data:', error));
 });

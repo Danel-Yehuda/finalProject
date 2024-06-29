@@ -24,6 +24,7 @@ function createKidCard(kid) {
                 <h5 class="card-title">${kid.name}</h5>
                 <p class="card-text">Tasks Done: ${kid.tasksDone}</p>
                 <p class="card-text">Coins: ${kid.coins}</p>
+                <input type="hidden" class="kid-id" value="${kid.id}">
                 <div class="d-flex justify-content-between align-items-center">
                     <button class="btn btn-primary btn-sm">Edit</button>
                     <button class="btn btn-danger btn-sm delete-kid">Delete</button>
@@ -39,7 +40,7 @@ function createAddKidButton() {
     addButton.classList.add('btn', 'btn-success', 'mt-4', 'Addkid');
     addButton.textContent = 'Add Kid';
     addButton.addEventListener('click', function () {
-        console.log('Add Kid button clicked');
+        
     });
 
     const container = document.querySelector('.container');
@@ -93,21 +94,26 @@ function AddKid() {
         const kidName = document.getElementById('kidName').value;
         const kidPhoto = document.getElementById('kidPhoto').files[0];
 
-        console.log("Adding kid:", kidName, kidPhoto);
-
         addKidModal.hide();
         addKidForm.reset();
 
-        const newKid = {
-            name: kidName,
-            image: '',
-            tasksDone: 0,
-            coins: 0
-        };
-        console.log(`POST https://taskids/api/kids/`);
-        console.log("Request body:", {
+        if (kidPhoto) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const newKid = {
+                    name: kidName,
+                    image: e.target.result,
+                    tasksDone: 0,
+                    coins: 0
+                };
+
+            console.log(`POST https://taskids/api/kids/`);
+            console.log("Request body:", {
             newKid: newKid
         });
+            };
+            reader.readAsDataURL(kidPhoto);
+        }
     });
 }
 
@@ -149,12 +155,8 @@ function DeleteKid() {
 
     document.getElementById('confirmDelete').addEventListener('click', function () {
         if (cardToDelete) {
-            cardToDelete.name = cardToDelete.querySelector('.card-title').innerText;
-            console.log(`POST https://taskids/api/kids/`);
-            console.log("Request body:", {
-                cardToDelete: cardToDelete,
-                name: `${cardToDelete.name}`
-            });
+            const kidId = cardToDelete.querySelector('.kid-id').value;
+            console.log(`DELETE https://taskids/api/kids/${kidId}`);
         }
     });
 
