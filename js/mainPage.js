@@ -35,7 +35,7 @@ function renderTasks(container, tasks, prepend = false) {
         });
 
         if (prepend) {
-            container.prepend(card); // Prepend new tasks
+            container.prepend(card);
         } else {
             container.appendChild(card);
         }
