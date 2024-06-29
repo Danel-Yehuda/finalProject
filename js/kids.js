@@ -149,11 +149,12 @@ function DeleteKid() {
 
     document.getElementById('confirmDelete').addEventListener('click', function () {
         if (cardToDelete) {
+            cardToDelete.name = cardToDelete.querySelector('.card-title').innerText;
             console.log(`POST https://taskids/api/kids/`);
-            console.log("Request body:",{
-                cardToDelete: cardToDelete
+            console.log("Request body:", {
+                cardToDelete: cardToDelete,
+                name: `${cardToDelete.name}`
             });
-            confirmDeleteModal.hide();
         }
     });
 

@@ -228,9 +228,12 @@ function DeleteTask() {
 
     document.getElementById('confirmDelete').addEventListener('click', function () {
         if (taskToDelete) {
+            const taskName = taskToDelete.firstChild.textContent.trim();
+
             console.log(`DELETE https://taskids/api/tasks/`);
             console.log("Request body:", {
-                taskToDelete: taskToDelete
+                taskToDelete: taskToDelete,
+                name: `${taskName}`
             });
 
             deleteModal.hide();
