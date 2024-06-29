@@ -67,6 +67,7 @@ function createListTasks(data) {
         ul.appendChild(li);
     });
 }
+
 function createPublish(data) {
     const main = document.querySelector("main");
     const h2 = document.createElement("h2");
@@ -106,9 +107,6 @@ function createPublish(data) {
         rectangleOfPublish.appendChild(card);
     });
 
-
-
-
     const div = document.createElement("div");
     const slideRight = document.createElement("i");
     slideRight.className = "bi bi-arrow-right";
@@ -125,7 +123,6 @@ function AddTRecommenedTasks(data) {
     data.AddTasks.forEach(task => {
         const AddTask = document.createElement('div');
         AddTask.classList.add('card');
-
         AddTask.innerHTML = `
             <div class="title">${task.name}</div>
             <input type="button" value="Add Task" class="add-task-button">
@@ -171,33 +168,17 @@ function AddNewTask() {
         document.getElementById('taskForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const taskName = document.getElementById('taskName').value;
-            console.log('New Task:', taskName);
-
-            const ul = document.querySelector('.list-group');
-            const li = document.createElement("li");
-            li.className = "list-group-item d-flex justify-content-between align-items-center";
-            li.textContent = taskName;
-
-            const div = document.createElement("div");
-
-            const editIcon = document.createElement("i");
-            editIcon.className = "bi bi-pencil";
-            div.appendChild(editIcon);
-
-            const deleteIcon = document.createElement("i");
-            deleteIcon.className = "bi bi-trash";
-            div.appendChild(deleteIcon);
-
-            const publishButton = document.createElement("input");
-            publishButton.type = "button";
-            publishButton.value = "Publish";
-            publishButton.id = "PublishTask";
-            div.appendChild(publishButton);
-
-            li.appendChild(div);
-            ul.prepend(li);
-
+            console.log(`POST https://taskids/api/tasks/`);
+            console.log("Request body:", {
+                taskName: taskName
+            });
             taskModal.hide();
+        });
+
+        Array.from(document.getElementsByClassName('btn-close')).forEach(function (element) {
+            element.addEventListener('click', function () {
+                taskModal.hide();
+            });
         });
     }
 
@@ -228,7 +209,7 @@ function DeleteTask() {
                         Are you sure you want to delete this task?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-secondary" id="cancelDelete" data-bs-dismiss="modal">No</button>
                         <button type="button" class="btn btn-danger" id="confirmDelete">Yes</button>
                     </div>
                 </div>
@@ -241,20 +222,33 @@ function DeleteTask() {
     Array.from(trashIcons).forEach(icon => {
         icon.addEventListener('click', function () {
             taskToDelete = this.closest('li');
-
             deleteModal.show();
         });
     });
 
     document.getElementById('confirmDelete').addEventListener('click', function () {
         if (taskToDelete) {
-            taskToDelete.remove();
-            taskToDelete = null;
+            console.log(`DELETE https://taskids/api/tasks/`);
+            console.log("Request body:", {
+                taskToDelete: taskToDelete
+            });
 
             deleteModal.hide();
         }
     });
+
+    document.getElementById('cancelDelete').addEventListener('click', function () {
+            deleteModal.hide();
+    });
+
+    Array.from(document.getElementsByClassName('btn-close')).forEach(function(element) {
+        element.addEventListener('click', function () {
+            deleteModal.hide();
+        });
+    });
+
 }
+
 
 function PublishTask(data) {
     const modalHtml = `
@@ -325,14 +319,16 @@ function openPublishModal(publishTaskModal, event, taskName) {
             status: '1'
         };
 
-        let tasks = JSON.parse(localStorage.getItem('publishedTasks')) || [];
-        tasks.unshift(newTask);
-        localStorage.setItem('publishedTasks', JSON.stringify(tasks));
+        console.log(`POST https://taskids/api/tasks/`);
+        console.log("Request body:", {
+            newTask: newTask
+        });
 
-        console.log(`Task assigned to: ${assignedTo}, Deadline: ${deadline}, Coins: ${coins}`);
+    });
 
-        publishTaskModal.hide();
-
-        form.removeEventListener('submit', submitHandler);
+    document.querySelectorAll('.btn-close').forEach(icon => {
+        icon.addEventListener('click', function () {
+            publishTaskModal.hide();
+        });
     });
 }

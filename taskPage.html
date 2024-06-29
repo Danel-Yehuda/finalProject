@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,53 +13,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script src="js/taskPage.js"></script>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">
-            <img src="images/Taskids_logo.png" alt="Logo" width="60" height="60" />
-        </a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="kids.html">Kids</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="ListOfTasks.html">Tasks</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="giftshop.html">GiftShop</a>
-            </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0 d-none d-lg-flex">
-            <div class="search-input">
-                <i id ="searchIcon" class="fa fa-search"></i>
-                <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search..."
-                aria-label="Search"
-                />
-            </div>
-            </form>
-            <img src="images/Picture1.png" alt="Profile" class="profile-pic ml-3" />
-            <button class="btn btn-outline-danger ml-2" type="button">
-            Log Out
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/Taskids_logo.png" alt="Logo" width="60" height="60" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
-    </nav>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kids.html">Kids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListOfTasks.html">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giftshop.html">GiftShop</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 d-none d-lg-flex">
+                    <div class="search-input">
+                        <i id="searchIcon" class="fa fa-search"></i>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" />
+                    </div>
+                </form>
+                <img src="images/Picture1.png" alt="Profile" class="profile-pic ml-3" />
+                <button class="btn btn-outline-danger ml-2" type="button">
+                    Log Out
+                </button>
+            </div>
+        </nav>
+    </header>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8">
@@ -87,4 +80,5 @@
         </div>
     </div>
 </body>
+
 </html>

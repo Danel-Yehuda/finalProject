@@ -104,15 +104,9 @@ function AddKid() {
             tasksDone: 0,
             coins: 0
         };
-
-        const kidsContainer = document.getElementById('kidsContainer');
-        const newKidCard = createKidCard(newKid);
-        kidsContainer.appendChild(newKidCard);
-        newKidCard.querySelector('.delete-kid').addEventListener('click', function () {
-            const confirmDelete = confirm(`Are you sure you want to delete ${kid.name}?`);
-            if (confirmDelete) {
-                newKidCard.remove();
-            }
+        console.log(`POST https://taskids/api/kids/`);
+        console.log("Request body:", {
+            newKid: newKid
         });
     });
 }
@@ -155,8 +149,10 @@ function DeleteKid() {
 
     document.getElementById('confirmDelete').addEventListener('click', function () {
         if (cardToDelete) {
-            cardToDelete.remove();
-            cardToDelete = null;
+            console.log(`POST https://taskids/api/kids/`);
+            console.log("Request body:",{
+                cardToDelete: cardToDelete
+            });
             confirmDeleteModal.hide();
         }
     });
